@@ -5,9 +5,51 @@
     <title>Weather</title>
     <link rel="stylesheet"
           href="styles.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
+    <script src="script.js"
+            defer></script>
 </head>
 <body>
-
+<div class="card">
+    <h1 class="card__title">
+        Weather
+    </h1>
+    <p class="card__date">
+        <span id="date">
+            today
+        </span>
+    </p>
+    <div class="card__search">
+        <input type="text" class="input__card" placeholder="Enter City name">
+        <button id="searchBtn" class="btn__card">
+            <i class="fa-solid fa-magnifying-glass-location"></i>
+        </button>
+    </div>
+    <div class="card__weather">
+        <h2 class="card__title card__title-city">Saratov</h2>
+        <div class="card__block">
+            <h3 class="card__title card__title-temp">22</h3>
+            <img src="https://w7.pngwing.com/pngs/812/34/png-transparent-weather-meteorology-overcast-cloud-weather-cloud-orange-weather-forecasting.png"
+                 class="card__weather-icon"
+                 alt="">
+        </div>
+    </div>
+    <div class="card__description">
+        <div class="card__col">
+            <i class="fa-solid fa-wind"></i>
+            <p>Wind</p>
+            <p id="wind" class="card__info">15 m/s</p>
+        </div>
+        <div class="card__col">
+            <i class="fa-solid fa-droplet"></i>
+            <p>Hum</p>
+            <p id="humidity" class="card__info">50 %</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
