@@ -16,3 +16,21 @@ const showDate = () => {
     date.innerHTML = `Today, ${day} ${monthName}`;
 }
 showDate()
+
+
+async function getWeather(city) {
+    city = city.trim();
+    if (!city) return;
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${apiKey}&units=metric`);
+        if (!response.ok) throw new Error('City not be found!');
+        const result = await response.json();
+        const iconUrl = `https://openweathermap.org/img/wn/${result.weather[0].icon}@4x.png`
+    } catch (err) {
+        alert(err)
+    }
+}
+
+searchBtn.addEventListener('click', () => {
+    getWeather(searchBox.value);
+});
