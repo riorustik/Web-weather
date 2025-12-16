@@ -31,7 +31,7 @@ body {
     border-radius: 20px;
     color: white;
     padding: 40px 20px;
-    /*height: 230px;*/
+    height: 230px;
     text-align: center;
     transition: all 0.5s;
 }
@@ -92,8 +92,8 @@ body {
 }
 
 .card__weather{
-    /*transform: scale(0);*/
-    /*opacity: 0;*/
+    transform: scale(0);
+    opacity: 0;
 }
 
 .card__block{
@@ -133,8 +133,22 @@ body {
     padding-left: 16px;
 }
 
-.card__col-info{}
+.card__col-info{
+    width: 20px;
+    flex: 0 0 20px;
+}
 
+.card.active .card__weather{
+    animation: show 0.5s forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes show{
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 
 
 
