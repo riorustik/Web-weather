@@ -15,17 +15,32 @@ const showDate = () => {
     const monthName = now.toLocaleString('en', {month: 'long'});
     date.innerHTML = `Today, ${day} ${monthName}`;
 }
-showDate()
 
+function styleChange() {
+    card.classList.add('active');
+    card.style.height = '530px';
+    searchBox.value = '';
+}
+
+function showWeather(res) {
+    const iconUrl = `https://openweathermap.org/img/wn/${res.weather[0].icon}@4x.png`
+    icon.src = iconUrl;
+    cityName.innerHTML = res.name;
+    hum.innerHTML = `${res.main.humidity} %`;
+    wind.innerHTML = `${res.wind.speed} m/s`;
+    temp.innerHTML = `${Math.round(res.main.temp)}°C`;
+}
 
 async function getWeather(city) {
     city = city.trim();
     if (!city) return;
+
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${apiKey}&units=metric`);
         if (!response.ok) throw new Error('City not be found!');
+        styleChange();
         const result = await response.json();
-        const iconUrl = `https://openweathermap.org/img/wn/${result.weather[0].icon}@4x.png`
+        showWeather(result)
     } catch (err) {
         alert(err)
     }
@@ -34,3 +49,5 @@ async function getWeather(city) {
 searchBtn.addEventListener('click', () => {
     getWeather(searchBox.value);
 });
+
+showDate()
